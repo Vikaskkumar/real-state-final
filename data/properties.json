@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Luxury 3bhk villa",
+    "location": "Bani park ,jaipur",
+    "price": "1.2cr",
+    "status": "For Sale",
+    "type": "Villa",
+    "beds": 3,
+    "baths": 2,
+    "area": "2400",
+    "agent": "Rajesh sharma",
+    "phone": "+919057262630",
+    "desc": "luxury properties",
+    "img": "/uploads/1780737564946-download (3).jfif"
+  }
+]
