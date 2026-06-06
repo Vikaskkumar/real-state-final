@@ -1,0 +1,44 @@
+name: Deploy Website to Windows Server 2025
+
+on:
+  push:
+    branches:
+      - main  # Adjust this if your default branch is named 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Pull your HTML files from your GitHub repository
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    # Step 2: Set up the SSH connection using a password
+    - name: Execute deployment via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        password: ${{ secrets.SERVER_PASSWORD }}
+        port: 22
+        script: |
+          # Windows Server 2025 uses PowerShell by default over SSH.
+          # We clear out any old files to prevent conflicts, then write the new ones.
+          
+          # Force create the target directory if it doesn't exist (just in case)
+          New-Item -ItemType Directory -Force -Path "C:\inetpub\wwwroot"
+          
+          # Clean old files to ensure a fresh deployment
+          Remove-Item -Path "C:\inetpub\wwwroot\*" -Recurve -Force -ErrorAction SilentlyContinue
+
+    # Step 3: Copy the files directly to the IIS folder using SCP
+    - name: Copy files over SCP
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        password: ${{ secrets.SERVER_PASSWORD }}
+        port: 22
+        source: "." # Copies everything in your repository root
+        target: "C:/inetpub/wwwroot" # Notice the forward slashes (/)—OpenSSH on Windows Server 2025 translates these perfectly.
