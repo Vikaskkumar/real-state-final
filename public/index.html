@@ -3,566 +3,447 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Bajiya Properties | Buy Sell Rent Properties</title>
-
-<meta name="description"
-content="Find premium residential and commercial properties with Bajiya Properties." />
-
-<meta name="keywords"
-content="property, real estate, plots, flats, houses, Jaipur property" />
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<style>
-:root {
-  --navy:  #0a0f1e;
-  --navy2: #0f1628;
-  --navy3: #161e35;
-  --gold:  #c9a84c;
-  --gold2: #e8cc82;
-  --mist:  rgba(255,255,255,0.06);
-  --mist2: rgba(255,255,255,0.11);
-  --border: rgba(201,168,76,0.22);
-  --border2: rgba(255,255,255,0.10);
-  --dim: rgba(255,255,255,0.45);
-  --mid: rgba(255,255,255,0.70);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Jost', sans-serif; background: var(--navy); color: #fff; }
-img  { max-width: 100%; display: block; }
-a    { color: inherit; text-decoration: none; }
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--navy); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-
-/* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 300;
-  height: 68px; padding: 0 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(10,15,30,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.45rem; font-weight: 600;
-  display: flex; align-items: center; gap: 8px;
-}
-.logo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-.nav-right { display: flex; gap: 10px; }
-.btn { font-family: 'Jost', sans-serif; font-size: .78rem; letter-spacing: .12em;
-  text-transform: uppercase; font-weight: 500; border-radius: 2px;
-  padding: 9px 22px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
-.btn-outline { background: transparent; color: var(--gold); border: 1.5px solid var(--border); }
-.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,.08); }
-.btn-gold { background: var(--gold); color: var(--navy); border: 1.5px solid var(--gold); }
-.btn-gold:hover { background: var(--gold2); border-color: var(--gold2); }
-
-/* ── HERO ── */
-.hero {
-  position: relative; height: 520px;
-  display: flex; align-items: flex-end;
-  overflow: hidden;
-}
-.hero-img {
-  position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85') center/cover no-repeat;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(10,15,30,.96) 0%, rgba(10,15,30,.45) 55%, rgba(10,15,30,.15) 100%);
-}
-.hero-content {
-  position: relative; z-index: 2;
-  padding: 0 56px 52px; max-width: 620px;
-}
-.hero-eyebrow {
-  font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 14px;
-  display: flex; align-items: center; gap: 10px;
-}
-.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 400; line-height: 1.1;
-  margin-bottom: 14px;
-}
-.hero h1 em { font-style: italic; color: var(--gold2); }
-.hero-sub {
-  font-size: .92rem; font-weight: 300; color: var(--mid);
-  line-height: 1.75; margin-bottom: 28px;
-}
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* stats ribbon */
-.stats-bar {
-  background: var(--navy2);
-  border-bottom: 1px solid var(--border2);
-  display: flex;
-}
-.stat-item {
-  flex: 1; padding: 20px 28px;
-  border-right: 1px solid var(--border2);
-  text-align: center;
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem; color: var(--gold); line-height: 1;
-  margin-bottom: 3px;
-}
-.stat-lbl { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
-
-/* ── SEARCH ── */
-.search-wrap {
-  padding: 28px 56px;
-  background: var(--navy2);
-  border-bottom: 1px solid var(--border2);
-}
-.search-bar {
-  display: flex; max-width: 860px;
-  border: 1px solid var(--border);
-  border-radius: 3px; overflow: hidden;
-  background: var(--mist);
-}
-.s-input {
-  flex: 1; padding: 14px 18px;
-  background: transparent; border: none; outline: none;
-  font-family: 'Jost', sans-serif; font-size: .9rem; color: #fff;
-}
-.s-input::placeholder { color: var(--dim); }
-.s-select {
-  padding: 14px 16px; background: transparent; border: none; border-left: 1px solid var(--border);
-  color: var(--mid); font-family: 'Jost', sans-serif; font-size: .85rem;
-  outline: none; cursor: pointer; min-width: 140px;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
-}
-.s-select option { background: var(--navy3); }
-.s-btn {
-  padding: 14px 28px; background: var(--gold); color: var(--navy);
-  border: none; font-family: 'Jost', sans-serif; font-size: .78rem;
-  letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-  cursor: pointer;
-}
-.s-btn:hover { background: var(--gold2); }
-
-/* ── LISTINGS SECTION ── */
-.listings-section { padding: 52px 56px; }
-.sec-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 28px; flex-wrap: wrap; gap: 14px;
-}
-.sec-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem; font-weight: 400;
-}
-.sec-title em { font-style: italic; color: var(--gold2); }
-.filter-tabs { display: flex; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
-.ftab {
-  padding: 8px 20px; background: transparent; border: none; border-right: 1px solid var(--border);
-  color: var(--dim); font-family: 'Jost', sans-serif; font-size: .74rem;
-  letter-spacing: .12em; text-transform: uppercase; font-weight: 500; cursor: pointer;
-}
-.ftab:last-child { border-right: none; }
-.ftab.active, .ftab:hover { background: var(--gold); color: var(--navy); }
-.count-badge {
-  font-size: .76rem; color: var(--dim); letter-spacing: .06em;
-  padding: 6px 16px; border: 1px solid var(--border2); border-radius: 99px;
-}
-
-/* ── PROPERTY GRID ── */
-.props-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--navy3);
-  border: 1px solid var(--border2);
-  border-radius: 3px; overflow: hidden;
-}
-.card:hover { border-color: var(--border); }
-.card-img {
-  position: relative; height: 210px; overflow: hidden; background: #111;
-}
-.card-img img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-.card-badge {
-  position: absolute; top: 12px; left: 12px;
-  padding: 4px 12px; border-radius: 2px;
-  font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
-}
-.b-sale { background: var(--gold); color: var(--navy); }
-.b-rent { background: #2e7d52; color: #fff; }
-.b-sold { background: #7d2e2e; color: #fff; }
-.card-price {
-  position: absolute; bottom: 0; right: 0;
-  background: rgba(10,15,30,.9); color: var(--gold2);
-  font-family: 'Playfair Display', serif; font-size: 1.15rem;
-  padding: 7px 14px;
-}
-.card-body { padding: 18px 18px 16px; }
-.card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; font-weight: 400; margin-bottom: 5px; line-height: 1.3;
-}
-.card-loc {
-  font-size: .72rem; color: var(--dim); letter-spacing: .07em; text-transform: uppercase;
-  margin-bottom: 14px; display: flex; align-items: center; gap: 4px;
-}
-.card-specs {
-  display: flex; gap: 16px;
-  padding: 12px 0; border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2);
-  margin-bottom: 13px;
-}
-.spec-v { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; display: block; }
-.spec-l { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
-.card-desc {
-  font-size: .82rem; color: var(--mid); line-height: 1.65; font-weight: 300;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  margin-bottom: 14px;
-}
-.card-foot {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 12px; border-top: 1px solid var(--border2);
-}
-.agent { display: flex; flex-direction: column; gap: 1px; }
-.agent-name { font-size: .8rem; font-weight: 500; }
-.agent-ph   { font-size: .73rem; color: var(--dim); }
-.card-btns  { display: flex; gap: 6px; }
-.cbtn {
-  padding: 6px 13px; border-radius: 2px;
-  font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
-  cursor: pointer; border: none; font-family: 'Jost', sans-serif;
-}
-.cbtn-edit { background: var(--mist2); color: #fff; }
-.cbtn-edit:hover { background: rgba(255,255,255,.16); }
-.cbtn-del  { background: transparent; color: #c05454; border: 1px solid rgba(192,84,84,.3); }
-.cbtn-del:hover { background: rgba(192,84,84,.12); }
-
-/* empty state */
-.empty {
-  grid-column: 1/-1; padding: 80px 0; text-align: center;
-}
-.empty h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 300; color: var(--dim); margin-bottom: 8px; }
-.empty p  { font-size: .85rem; color: var(--dim); }
-
-/* ── CONTACT SECTION ── */
-.contact-section {
-  background: var(--navy2);
-  border-top: 1px solid var(--border2);
-  padding: 64px 56px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-}
-.contact-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem; font-weight: 400; margin-bottom: 10px;
-}
-.contact-section h2 em { font-style: italic; color: var(--gold2); }
-.contact-section > div > p {
-  font-size: .88rem; color: var(--mid); font-weight: 300; line-height: 1.75; margin-bottom: 28px;
-}
-.contact-rows { display: flex; flex-direction: column; gap: 12px; }
-.c-row {
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 16px; background: var(--mist); border: 1px solid var(--border2);
-  border-radius: 3px;
-}
-.c-icon {
-  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-  background: rgba(201,168,76,.1); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center; font-size: .85rem;
-}
-.c-lbl  { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
-.c-val  { font-size: .88rem; color: #fff; font-weight: 300; }
-
-/* contact form */
-.cf { display: flex; flex-direction: column; gap: 12px; }
-.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.cf-group { display: flex; flex-direction: column; gap: 5px; }
-.cf-lbl {
-  font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); font-weight: 500;
-}
-.cf-input, .cf-select, .cf-textarea {
-  font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300;
-  padding: 11px 14px; background: var(--mist); border: 1px solid var(--border2);
-  color: #fff; border-radius: 2px; outline: none; width: 100%;
-}
-.cf-input:focus, .cf-select:focus, .cf-textarea:focus { border-color: var(--gold); }
-.cf-input::placeholder, .cf-textarea::placeholder { color: rgba(255,255,255,.22); }
-.cf-select { appearance: none; cursor: pointer; }
-.cf-select option { background: var(--navy3); }
-.cf-textarea { min-height: 100px; resize: vertical; }
-
-/* ── FOOTER ── */
-footer {
-  background: var(--navy);
-  border-top: 1px solid var(--border2);
-  padding: 28px 56px;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-}
-footer .logo { font-size: 1.2rem; }
-footer p { font-size: .74rem; color: var(--dim); }
-
-/* ── MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(5,8,18,.85); backdrop-filter: blur(5px);
-  z-index: 600; align-items: center; justify-content: center; padding: 20px;
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--navy2); width: 100%; max-width: 640px; max-height: 90vh;
-  overflow-y: auto; border: 1px solid var(--border);
-  border-top: 2px solid var(--gold);
-  padding: 40px; position: relative; border-radius: 3px;
-}
-.modal-close {
-  position: absolute; top: 14px; right: 16px;
-  background: var(--mist); border: 1px solid var(--border2);
-  color: var(--dim); width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .95rem; cursor: pointer;
-}
-.modal-close:hover { color: #fff; border-color: var(--border); }
-.modal-eyebrow { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-.modal h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 4px; }
-.modal-sub { font-size: .82rem; color: var(--dim); margin-bottom: 28px; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.fg { display: flex; flex-direction: column; gap: 5px; }
-.fg.full { grid-column: 1/-1; }
-.fl { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); font-weight: 500; }
-.fi, .fsel, .fta {
-  font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300;
-  padding: 11px 14px; background: var(--mist); border: 1px solid var(--border2);
-  color: #fff; border-radius: 2px; outline: none; width: 100%;
-}
-.fi:focus, .fsel:focus, .fta:focus { border-color: var(--gold); }
-.fi::placeholder, .fta::placeholder { color: rgba(255,255,255,.22); }
-.fsel { appearance: none; cursor: pointer; }
-.fsel option { background: var(--navy3); }
-.fta { resize: vertical; min-height: 88px; }
-.img-zone {
-  height: 120px; border: 1.5px dashed rgba(201,168,76,.35); border-radius: 2px;
-  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 5px;
-  cursor: pointer; position: relative; overflow: hidden; background: var(--mist);
-}
-.img-zone:hover { border-color: var(--gold); }
-.img-zone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.img-zone-txt { font-size: .78rem; color: var(--dim); text-align: center; z-index: 1; pointer-events: none; }
-.modal-foot {
-  display: flex; justify-content: flex-end; gap: 10px;
-  margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border2);
-}
-.mbtn {
-  font-family: 'Jost', sans-serif; font-size: .76rem; letter-spacing: .14em;
-  text-transform: uppercase; font-weight: 500; padding: 10px 26px;
-  border-radius: 2px; cursor: pointer;
-}
-.mbtn-cancel { background: var(--mist); color: var(--mid); border: 1px solid var(--border2); }
-.mbtn-cancel:hover { background: var(--mist2); }
-.mbtn-save { background: var(--gold); color: var(--navy); border: none; }
-.mbtn-save:hover { background: var(--gold2); }
-
-/* ── TOAST ── */
-.toast {
-  position: fixed; bottom: 28px; right: 28px; z-index: 800;
-  background: var(--navy3); color: #fff;
-  border: 1px solid var(--border); border-left: 3px solid var(--gold);
-  padding: 12px 22px; border-radius: 3px;
-  font-size: .84rem; letter-spacing: .03em;
-  opacity: 0; pointer-events: none;
-  transition: opacity .3s;
-}
-.toast.show { opacity: 1; }
-
-/* ── ADMIN AUTH ── */
-.admin-only { display: none !important; }
-body.admin-mode .admin-only { display: inline-flex !important; }
-body.admin-mode .card-btns { display: flex !important; }
-.card-btns { display: none; }
-
-/* Login modal */
-#login-modal .modal { max-width: 400px; }
-.login-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 18px; }
-.login-err {
-  font-size: .8rem; color: #e05a5a;
-  background: rgba(224,90,90,.1); border: 1px solid rgba(224,90,90,.25);
-  border-radius: 2px; padding: 8px 12px; margin-bottom: 14px; display: none;
-}
-.login-err.show { display: block; }
-.admin-bar {
-  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 700;
-  background: rgba(10,15,30,.97); border-top: 1px solid var(--border);
-  padding: 8px 24px; align-items: center; justify-content: space-between;
-  font-size: .74rem; color: var(--gold); letter-spacing: .1em;
-}
-body.admin-mode .admin-bar { display: flex; }
-.admin-bar span { color: var(--dim); }
-.admin-bar button {
-  padding: 6px 16px; background: transparent; border: 1px solid var(--border);
-  color: var(--dim); font-family: 'Jost', sans-serif; font-size: .72rem;
-  letter-spacing: .1em; text-transform: uppercase; cursor: pointer; border-radius: 2px;
-}
-.admin-bar button:hover { color: #e05a5a; border-color: rgba(224,90,90,.4); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  nav, .search-wrap, .listings-section, .contact-section, footer { padding-left: 20px; padding-right: 20px; }
-  .hero-content { padding-left: 20px; padding-right: 20px; }
-  .props-grid { grid-template-columns: 1fr 1fr; }
-  .stats-bar { flex-wrap: wrap; }
-  .stat-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border2); }
-  .contact-section { grid-template-columns: 1fr; gap: 40px; }
-}
-@media (max-width: 600px) {
-  .nav-right .btn-outline { display: none; }
-  .props-grid { grid-template-columns: 1fr; }
-  .form-grid, .cf-row { grid-template-columns: 1fr; }
-  .fg.full { grid-column: 1; }
-}
-
-/* Find this block in your index.html and update the background line */
-.hero-img {
-  position: absolute; inset: 0;
-  /* Change the URL here to point to your local home.jpg */
-  background: url('/home.jpg') center/cover no-repeat;
-}
-
-</style>
+<title>Bajiya Properties | Premium Real Estate in Jaipur</title>
+<meta name="description" content="Find premium residential and commercial properties with Bajiya Properties. Trusted real estate agency in Jaipur."/>
+<meta name="keywords" content="property, real estate, plots, flats, houses, Jaipur property, buy sell rent"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<nav>
-  <div class="logo"><div class="logo-dot"></div> Bajiya Properties</div>
-  <div class="nav-right">
-    <button class="btn btn-outline admin-only" onclick="openContactModal()">Edit Contact</button>
-    <button class="btn btn-gold admin-only" onclick="openAddModal()">+ Add Property</button>
-    <button class="btn btn-outline" id="admin-login-btn" onclick="openLoginModal()" style="display:inline-flex;">Admin</button>
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar">
+  <a class="logo" href="#">
+    <div class="logo-mark"><span>B</span></div>
+    <div class="logo-text">Bajiya <span>Properties</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#listings" class="nav-link" onclick="smoothNav(event,'listings')">Listings</a>
+    <a href="#services" class="nav-link" onclick="smoothNav(event,'services')">Services</a>
+    <a href="#about" class="nav-link" onclick="smoothNav(event,'about')">About</a>
+    <a href="#contact" class="nav-link" onclick="smoothNav(event,'contact')">Contact</a>
   </div>
+  <div class="nav-actions">
+    <button class="btn btn-ghost admin-only" onclick="openContactModal()">Edit Contact</button>
+    <button class="btn btn-ghost admin-only" onclick="openAddModal()">+ Add Listing</button>
+    <button class="btn btn-outline" id="admin-login-btn" onclick="openLoginModal()">Admin</button>
+    <button class="btn btn-primary" onclick="smoothNav(null,'contact')">Get in Touch</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<section class="hero">
-  <div class="hero-img"> </div>
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <button class="drawer-close" onclick="toggleMenu()">✕</button>
+  <a href="#listings"  onclick="smoothNav(event,'listings');toggleMenu()">Listings</a>
+  <a href="#services"  onclick="smoothNav(event,'services');toggleMenu()">Services</a>
+  <a href="#about"     onclick="smoothNav(event,'about');toggleMenu()">About</a>
+  <a href="#contact"   onclick="smoothNav(event,'contact');toggleMenu()">Contact</a>
+  <div class="drawer-divider"></div>
+  <button class="btn btn-outline" id="mobile-admin-btn" onclick="openLoginModal();toggleMenu()">Admin Login</button>
+  <button class="btn btn-primary" onclick="smoothNav(null,'contact');toggleMenu()">Get in Touch</button>
+</div>
+<div class="drawer-backdrop" id="drawer-backdrop" onclick="toggleMenu()"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image: url('Home.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('Home2.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('Home3.jpg')"></div>
+  </div>
   <div class="hero-overlay"></div>
+
   <div class="hero-content">
-    <div class="hero-eyebrow">Premium Real Estate</div>
-    <h1>Find Your<br><em>Perfect Property</em></h1>
-    <p class="hero-sub">Curated residences and commercial spaces across the finest locations. Trusted by hundreds of buyers and investors.</p>
-    <div class="hero-actions">
-      <button class="btn btn-gold" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">View Listings</button>
-      <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+    <div class="hero-eyebrow reveal">   
+      <span class="eyebrow-line"></span>
+      Premium Real Estate · Jaipur
+    </div>
+    <h1 class="hero-h1 reveal">
+      Discover Your<br><em>Dream Property</em>
+    </h1>
+    <p class="hero-sub reveal">Curated residences &amp; commercial spaces across Jaipur's finest locations. Trusted by 500+ buyers &amp; investors since 2009.</p>
+
+    <!-- Inline search -->
+    <div class="hero-search reveal">
+      <div class="hs-tabs">
+        <button class="hs-tab active" onclick="setHsTab(this,'For Sale')">Buy</button>
+        <button class="hs-tab" onclick="setHsTab(this,'For Rent')">Rent</button>
+        <button class="hs-tab" onclick="setHsTab(this,'')">All</button>
+      </div>
+      <div class="hs-fields">
+        <div class="hs-field">
+          <label class="hs-label">Location / Keyword</label>
+          <input class="hs-input" id="hs-kw" type="text" placeholder="e.g. Bani Park, Villa…"/>
+        </div>
+        <div class="hs-sep"></div>
+        <div class="hs-field">
+          <label class="hs-label">Property Type</label>
+          <select class="hs-input" id="hs-type">
+            <option value="">Any Type</option>
+            <option>Villa</option><option>Apartment</option>
+            <option>Residential</option><option>Commercial</option><option>Plot</option>
+          </select>
+        </div>
+        <div class="hs-sep"></div>
+        <div class="hs-field">
+          <label class="hs-label">Budget</label>
+          <select class="hs-input" id="hs-budget">
+            <option value="">Any Budget</option>
+            <option value="50L">Under ₹50 Lakh</option>
+            <option value="1Cr">₹50L – ₹1 Cr</option>
+            <option value="2Cr">₹1 Cr – ₹2 Cr</option>
+            <option value="5Cr">₹2 Cr – ₹5 Cr</option>
+            <option value="5Cr+">₹5 Cr+</option>
+          </select>
+        </div>
+        <button class="hs-btn" onclick="heroSearch()">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/><path d="M15 15l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Search
+        </button>
+      </div>
     </div>
   </div>
+
+  <div class="hero-slide-dots">
+    <button class="slide-dot active" onclick="goSlide(0)"></button>
+    <button class="slide-dot" onclick="goSlide(1)"></button>
+    <button class="slide-dot" onclick="goSlide(2)"></button>
+  </div>
+  <button class="hero-scroll-cue" onclick="smoothNav(null,'stats')">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 </section>
 
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num" id="s-total">0</div><div class="stat-lbl">Total Listings</div></div>
-  <div class="stat-item"><div class="stat-num" id="s-sale">0</div><div class="stat-lbl">For Sale</div></div>
-  <div class="stat-item"><div class="stat-num" id="s-rent">0</div><div class="stat-lbl">For Rent</div></div>
-  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Happy Clients</div></div>
-  <div class="stat-item"><div class="stat-num">15+</div><div class="stat-lbl">Years Experience</div></div>
-</div>
-
-<div class="search-wrap">
-  <div class="search-bar">
-    <input class="s-input" id="s-keyword" type="text" placeholder="Search by title, location, or type…" oninput="doSearch()"/>
-    <select class="s-select" id="s-status" onchange="doSearch()">
-      <option value="">All Status</option>
-      <option>For Sale</option>
-      <option>For Rent</option>
-      <option>Sold</option>
-    </select>
-    <select class="s-select" id="s-type" onchange="doSearch()">
-      <option value="">All Types</option>
-      <option>Villa</option>
-      <option>Apartment</option>
-      <option>Residential</option>
-      <option>Commercial</option>
-      <option>Plot</option>
-    </select>
-    <button class="s-btn" onclick="doSearch()">Search</button>
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar" id="stats">
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s-total" data-target="0">0</div>
+    <div class="stat-lbl">Active Listings</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s-sale" data-target="0">0</div>
+    <div class="stat-lbl">For Sale</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" id="s-rent" data-target="0">0</div>
+    <div class="stat-lbl">For Rent</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num count-up" data-target="500">0</div>
+    <div class="stat-lbl">Happy Clients</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num count-up" data-target="15">0</div>
+    <div class="stat-lbl">Years Experience</div>
   </div>
 </div>
 
-<section class="listings-section" id="listings">
-  <div class="sec-header">
-    <h2 class="sec-title">Our <em>Properties</em></h2>
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-      <div class="filter-tabs">
-        <button class="ftab active" onclick="setFilter('all',this)">All</button>
-        <button class="ftab" onclick="setFilter('For Sale',this)">For Sale</button>
-        <button class="ftab" onclick="setFilter('For Rent',this)">For Rent</button>
-        <button class="ftab" onclick="setFilter('Sold',this)">Sold</button>
+<!-- ═══ LISTINGS ═══ -->
+<section class="section listings-section" id="listings">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Our Portfolio</div>
+    <h2 class="section-title">Featured <em>Properties</em></h2>
+    <p class="section-sub">Hand-picked residences and commercial spaces across the finest addresses in Jaipur.</p>
+  </div>
+
+  <div class="listings-toolbar reveal">
+    <div class="filter-tabs">
+      <button class="ftab active" onclick="setFilter('all',this)">All</button>
+      <button class="ftab" onclick="setFilter('For Sale',this)">For Sale</button>
+      <button class="ftab" onclick="setFilter('For Rent',this)">For Rent</button>
+      <button class="ftab" onclick="setFilter('Sold',this)">Sold</button>
+    </div>
+    <div class="toolbar-right">
+      <div class="search-inline">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/><path d="M15 15l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="s-kw" type="text" placeholder="Search properties…" oninput="render()"/>
       </div>
+      <select class="toolbar-select" id="s-type" onchange="render()">
+        <option value="">All Types</option>
+        <option>Villa</option><option>Apartment</option><option>Residential</option><option>Commercial</option><option>Plot</option>
+      </select>
+      <select class="toolbar-select" id="s-status" onchange="render()">
+        <option value="">All Status</option>
+        <option>For Sale</option><option>For Rent</option><option>Sold</option>
+      </select>
       <span class="count-badge" id="count-badge">—</span>
     </div>
   </div>
+
   <div class="props-grid" id="props-grid"></div>
+
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="btn btn-outline-lg" id="load-more-btn" onclick="loadMore()">Load More Properties</button>
+  </div>
 </section>
 
-
-
-
-<div class="cf">
-  <div class="cf-row">
-    <div class="cf-group">
-      <label class="cf-lbl">Full Name</label>
-      <input class="cf-input" id="cf-name" placeholder="Your name"/>
+<!-- ═══ SERVICES ═══ -->
+<section class="section services-section" id="services">
+  <div class="services-inner">
+    <div class="section-head reveal" style="text-align:left;max-width:480px">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Our <em>Services</em></h2>
+      <p class="section-sub">End-to-end real estate solutions tailored for buyers, sellers, and investors.</p>
     </div>
-
-    <div class="cf-group">
-      <label class="cf-lbl">Phone</label>
-      <input class="cf-input" id="cf-phone" placeholder="+91 9876543210"/>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 14L14 4l10 10v9a1 1 0 01-1 1H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 24V16h8v8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="svc-title">Property Sales</h3>
+        <p class="svc-desc">Expert guidance through every step of buying or selling residential and commercial properties in Jaipur.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 11h20" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="17" r="1.5" fill="currentColor"/></svg>
+        </div>
+        <h3 class="svc-title">Rental Management</h3>
+        <p class="svc-desc">Full-service property management for landlords — tenant sourcing, agreements, and monthly oversight.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3L4 8v4c0 6.6 4.3 12.8 10 14 5.7-1.2 10-7.4 10-14V8L14 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="svc-title">Legal Assistance</h3>
+        <p class="svc-desc">Title verification, stamp duty guidance, sale deed drafting, and end-to-end registration support.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M14 9v5l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="svc-title">Investment Advisory</h3>
+        <p class="svc-desc">Data-driven advice on high-yield plots, commercial spaces, and emerging micro-markets across Rajasthan.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22l4-8 4 5 4-3 4 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="20" height="20" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3 class="svc-title">Site Visits</h3>
+        <p class="svc-desc">Scheduled site visits with our expert agents who walk you through every detail and answer your questions.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C8.48 4 4 8.48 4 14s4.48 10 10 10 10-4.48 10-10S19.52 4 14 4z" stroke="currentColor" stroke-width="1.6"/><path d="M14 9v5.5l4 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="svc-title">After-Sale Support</h3>
+        <p class="svc-desc">We stay connected long after handover — mutation assistance, utility transfers, and neighbourhood guidance.</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="cf-group">
-    <label class="cf-lbl">Email</label>
-    <input class="cf-input" type="email" id="cf-email" placeholder="you@email.com"/>
+<!-- ═══ ABOUT / WHY US ═══ -->
+<section class="section about-section" id="about">
+  <div class="about-media reveal">
+    <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=900&q=85" alt="Bajiya Properties Office" class="about-img"/>
+    <div class="about-badge reveal">
+      <div class="ab-num">15+</div>
+      <div class="ab-label">Years of<br>Excellence</div>
+    </div>
   </div>
-
-  <div class="cf-group">
-    <label class="cf-lbl">Interest</label>
-    <select class="cf-select" id="cf-interest">
-      <option>Buying a Property</option>
-      <option>Renting a Property</option>
-      <option>Listing My Property</option>
-      <option>General Enquiry</option>
-    </select>
+  <div class="about-content">
+    <div class="section-eyebrow reveal">About Bajiya Properties</div>
+    <h2 class="section-title reveal">Jaipur's Most <em>Trusted</em><br>Real Estate Partner</h2>
+    <p class="about-para reveal">Founded in 2009, Bajiya Properties has grown into one of Jaipur's most respected real estate agencies. We bring deep local knowledge, transparent dealings, and a genuine passion for matching people with the right properties.</p>
+    <div class="about-pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <div>
+          <div class="pillar-title">Transparency First</div>
+          <div class="pillar-sub">No hidden costs, no pressure — just honest advice.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <div>
+          <div class="pillar-title">Deep Local Expertise</div>
+          <div class="pillar-sub">15+ years navigating Jaipur's real estate market.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <div>
+          <div class="pillar-title">End-to-End Support</div>
+          <div class="pillar-sub">From search to registry — we stay with you throughout.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <div>
+          <div class="pillar-title">500+ Happy Clients</div>
+          <div class="pillar-sub">A track record built on trust and results.</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="cf-group">
-    <label class="cf-lbl">Message</label>
-    <textarea class="cf-textarea" id="cf-message" placeholder="What are you looking for?"></textarea>
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section testimonials-section">
+  <div class="section-head reveal" style="text-align:center">
+    <div class="section-eyebrow">Client Stories</div>
+    <h2 class="section-title">What Our <em>Clients</em> Say</h2>
   </div>
-
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    
-    <button class="btn btn-gold" onclick="sendMessage()">
-  Send Message
-</button>
-
-</div>
-
+  <div class="testi-track-wrap">
+    <div class="testi-track" id="testi-track">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Bajiya Properties helped us find our dream villa in Bani Park within three weeks. The team was incredibly knowledgeable and made the entire process smooth and stress-free."</p>
+        <div class="testi-author"><div class="testi-avatar">RS</div><div><div class="testi-name">Rajesh Sharma</div><div class="testi-role">Purchased Villa, Bani Park</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We invested in a commercial plot on their recommendation and the returns have been exceptional. Truly experts who understand the Jaipur market inside out."</p>
+        <div class="testi-author"><div class="testi-avatar">PG</div><div><div class="testi-name">Priya Gupta</div><div class="testi-role">Commercial Investor, Malviya Nagar</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Very professional team. They handled all the legal paperwork and made our first home purchase a wonderful experience. Highly recommend to anyone looking in Jaipur."</p>
+        <div class="testi-author"><div class="testi-avatar">AK</div><div><div class="testi-name">Amit Kumar</div><div class="testi-role">Purchased Apartment, Vaishali Nagar</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Renting our property through Bajiya was the best decision. They found reliable tenants quickly and managed everything professionally. Zero headaches for us."</p>
+        <div class="testi-author"><div class="testi-avatar">NK</div><div><div class="testi-name">Nisha Khandelwal</div><div class="testi-role">Landlord, C-Scheme</div></div></div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button class="testi-prev" onclick="moveTestimonials(-1)">&#8592;</button>
+      <button class="testi-next" onclick="moveTestimonials(1)">&#8594;</button>
+    </div>
   </div>
-</div>
+</section>
 
+<!-- ═══ CONTACT ═══ -->
+<section class="section contact-section" id="contact">
+  <div class="contact-left reveal">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Let's Find Your<br><em>Perfect Property</em></h2>
+    <p class="contact-intro">Whether you're buying, selling, or investing — our team is ready to guide you every step of the way.</p>
+    <div class="contact-rows" id="contact-rows"></div>
+    <div class="contact-social">
+      <a class="social-btn whatsapp-btn" id="wa-link" href="#" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <div class="cf-card">
+      <h3 class="cf-title">Send a Message</h3>
+      <p class="cf-sub">We'll get back to you within 24 hours.</p>
+      <div class="cf">
+        <div class="cf-row">
+          <div class="cf-group">
+            <label class="cf-lbl">Your Name</label>
+            <input class="cf-input" id="cf-name" placeholder="Rahul Sharma"/>
+          </div>
+          <div class="cf-group">
+            <label class="cf-lbl">Phone</label>
+            <input class="cf-input" id="cf-phone" placeholder="+91 98765 43210"/>
+          </div>
+        </div>
+        <div class="cf-group">
+          <label class="cf-lbl">Email</label>
+          <input class="cf-input" id="cf-email" type="email" placeholder="rahul@email.com"/>
+        </div>
+        <div class="cf-group">
+          <label class="cf-lbl">Interested In</label>
+          <select class="cf-select" id="cf-interest">
+            <option>Buying a Property</option>
+            <option>Renting a Property</option>
+            <option>Selling My Property</option>
+            <option>Investment Advice</option>
+          </select>
+        </div>
+        <div class="cf-group">
+          <label class="cf-lbl">Message</label>
+          <textarea class="cf-textarea" id="cf-msg" placeholder="Tell us what you're looking for…"></textarea>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="submitContact()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="logo"><div class="logo-dot"></div> Bajiya Properties</div>
-  <p id="footer-email">info@prestigerealty.in</p>
-  <p>© 2025 Bajiya Properties. All rights reserved.</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark"><span>B</span></div>
+        <div class="logo-text">Bajiya <span>Properties</span></div>
+      </div>
+      <p class="footer-tagline">Connecting people with premium properties across Jaipur since 2009.</p>
+    </div>
+    <div class="footer-links-group">
+      <div class="fl-col">
+        <div class="fl-head">Quick Links</div>
+        <a href="#listings" onclick="smoothNav(event,'listings')">Properties</a>
+        <a href="#services" onclick="smoothNav(event,'services')">Services</a>
+        <a href="#about"    onclick="smoothNav(event,'about')">About Us</a>
+        <a href="#contact"  onclick="smoothNav(event,'contact')">Contact</a>
+      </div>
+      <div class="fl-col">
+        <div class="fl-head">Property Types</div>
+        <a href="#" onclick="filterByType('Villa')">Villas</a>
+        <a href="#" onclick="filterByType('Apartment')">Apartments</a>
+        <a href="#" onclick="filterByType('Plot')">Plots</a>
+        <a href="#" onclick="filterByType('Commercial')">Commercial</a>
+      </div>
+      <div class="fl-col" id="footer-contact-col">
+        <div class="fl-head">Contact</div>
+        <a id="footer-email" href="#">—</a>
+        <a id="footer-phone" href="#">—</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Bajiya Properties. All rights reserved.</p>
+    <p class="footer-tagline-sm">Designed with ♥ in Jaipur</p>
+  </div>
 </footer>
 
+<!-- ═══ FLOATING WHATSAPP ═══ -->
+<a class="fab-wa" id="fab-wa" href="#" target="_blank" rel="noopener" title="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- ═══ PROPERTY DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="detail-modal">
+  <div class="modal modal-detail">
+    <button class="modal-close" onclick="closeModal('detail-modal')">✕</button>
+    <div class="detail-imgs">
+      <img id="det-img" src="" alt="" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80'"/>
+      <span id="det-badge" class="card-badge"></span>
+    </div>
+    <div class="detail-body">
+      <div class="detail-top">
+        <div>
+          <div class="det-type" id="det-type"></div>
+          <h2 class="det-title" id="det-title"></h2>
+          <div class="det-loc" id="det-loc"></div>
+        </div>
+        <div class="det-price" id="det-price"></div>
+      </div>
+      <div class="det-specs" id="det-specs"></div>
+      <p class="det-desc" id="det-desc"></p>
+      <div class="det-agent" id="det-agent"></div>
+      <div class="det-actions">
+        <a class="btn btn-primary" id="det-wa" href="#" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Enquire on WhatsApp
+        </a>
+        <button class="btn btn-outline-sm" onclick="closeModal('detail-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADD / EDIT PROPERTY MODAL ═══ -->
 <div class="modal-overlay" id="prop-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('prop-modal')">✕</button>
@@ -573,26 +454,22 @@ body.admin-mode .admin-bar { display: flex; }
       <div class="fg full"><label class="fl">Title</label><input class="fi" id="f-title" placeholder="e.g. Luxury 3BHK Villa in Bani Park"/></div>
       <div class="fg"><label class="fl">Location</label><input class="fi" id="f-location" placeholder="e.g. Bani Park, Jaipur"/></div>
       <div class="fg"><label class="fl">Price</label><input class="fi" id="f-price" placeholder="e.g. ₹1.2 Cr"/></div>
-      <div class="fg">
-        <label class="fl">Status</label>
-        <select class="fsel" id="f-status"><option>For Sale</option><option>For Rent</option><option>Sold</option></select>
-      </div>
-      <div class="fg">
-        <label class="fl">Type</label>
-        <select class="fsel" id="f-type"><option>Villa</option><option>Apartment</option><option>Residential</option><option>Commercial</option><option>Plot</option></select>
-      </div>
+      <div class="fg"><label class="fl">Status</label>
+        <select class="fsel" id="f-status"><option>For Sale</option><option>For Rent</option><option>Sold</option></select></div>
+      <div class="fg"><label class="fl">Type</label>
+        <select class="fsel" id="f-type"><option>Villa</option><option>Apartment</option><option>Residential</option><option>Commercial</option><option>Plot</option></select></div>
       <div class="fg"><label class="fl">Bedrooms</label><input class="fi" id="f-beds" type="number" min="0" placeholder="3"/></div>
       <div class="fg"><label class="fl">Bathrooms</label><input class="fi" id="f-baths" type="number" min="0" placeholder="2"/></div>
       <div class="fg"><label class="fl">Area (sq ft)</label><input class="fi" id="f-area" placeholder="2400"/></div>
       <div class="fg"><label class="fl">Agent Name</label><input class="fi" id="f-agent" placeholder="Rajesh Sharma"/></div>
       <div class="fg"><label class="fl">Agent Phone</label><input class="fi" id="f-phone" placeholder="+91 98765 43210"/></div>
-      <div class="fg full"><label class="fl">Description</label><textarea class="fta" id="f-desc" placeholder="Key highlights, amenities, surroundings…"></textarea></div>
+      <div class="fg full"><label class="fl">Description</label><textarea class="fta" id="f-desc" placeholder="Key highlights, amenities…"></textarea></div>
       <div class="fg full"><label class="fl">Image URL</label><input class="fi" id="f-imgurl" placeholder="https://…" oninput="previewUrl()"/></div>
       <div class="fg full">
         <label class="fl">Or Upload Image</label>
         <div class="img-zone" onclick="document.getElementById('f-file').click()">
           <img id="img-prev" style="display:none"/>
-          <div class="img-upload-icon" id="img-icon" style="font-size:1.6rem">🏠</div>
+          <div id="img-icon" style="font-size:1.6rem">🏠</div>
           <div class="img-zone-txt" id="img-txt">Click to upload a photo</div>
         </div>
         <input type="file" id="f-file" accept="image/*" style="display:none" onchange="handleUpload(event)"/>
@@ -605,6 +482,7 @@ body.admin-mode .admin-bar { display: flex; }
   </div>
 </div>
 
+<!-- ═══ CONTACT EDIT MODAL ═══ -->
 <div class="modal-overlay" id="contact-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('contact-modal')">✕</button>
@@ -616,7 +494,7 @@ body.admin-mode .admin-bar { display: flex; }
       <div class="fg"><label class="fl">Phone</label><input class="fi" id="c-phone"/></div>
       <div class="fg"><label class="fl">Email</label><input class="fi" id="c-email" type="email"/></div>
       <div class="fg full"><label class="fl">Address</label><input class="fi" id="c-address"/></div>
-      <div class="fg"><label class="fl">WhatsApp</label><input class="fi" id="c-whatsapp"/></div>
+      <div class="fg"><label class="fl">WhatsApp</label><input class="fi" id="c-whatsapp" placeholder="+91 98765 43210"/></div>
       <div class="fg"><label class="fl">Business Hours</label><input class="fi" id="c-hours" placeholder="Mon–Sat, 9am–7pm"/></div>
     </div>
     <div class="modal-foot">
@@ -626,30 +504,17 @@ body.admin-mode .admin-bar { display: flex; }
   </div>
 </div>
 
-<div style="display:flex;gap:10px;">
-  <button class="btn btn-gold" onclick="sendMessage()">
-      Send Email
-  </button>
-
-  <button
-      class="btn"
-      style="background:#25D366;color:white;"
-      onclick="sendWhatsApp()">
-      WhatsApp
-  </button>
-</div>
-
+<!-- ═══ LOGIN MODAL ═══ -->
 <div class="modal-overlay" id="login-modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('login-modal')">&#x2715;</button>
+  <div class="modal modal-sm">
+    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
     <div class="modal-eyebrow">Admin Access</div>
     <h2>Sign In</h2>
-    <p class="modal-sub">Enter your admin password to manage listings and settings.</p>
+    <p class="modal-sub">Enter your admin password to manage listings.</p>
     <div class="login-err" id="login-err">Incorrect password. Please try again.</div>
     <div class="login-field">
       <label class="fl">Password</label>
-      <input class="fi" type="password" id="admin-pass" placeholder="Enter admin password"
-        onkeydown="if(event.key==='Enter')doLogin()"/>
+      <input class="fi" type="password" id="admin-pass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()"/>
     </div>
     <div class="modal-foot">
       <button class="mbtn mbtn-cancel" onclick="closeModal('login-modal')">Cancel</button>
@@ -658,418 +523,15 @@ body.admin-mode .admin-bar { display: flex; }
   </div>
 </div>
 
+<!-- Admin bar -->
 <div class="admin-bar">
-  <span>&#x2699; Admin Mode Active</span>
+  <span>⚙ Admin Mode Active</span>
   <button onclick="doLogout()">Log Out</button>
 </div>
 
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<script>
-/* ── LOCAL CACHED MEMORY (Fed by server APIs) ── */
-let props = [];
-let contact = {};
-let activeFilter = 'all', editId = null, uploadFileObject = null;
-
-// Initial sync on app load
-async function initApp() {
-  try {
-    const propsRes = await fetch('/api/properties');
-    props = await propsRes.json();
-    
-    const contactRes = await fetch('/api/contact');
-    contact = await contactRes.json();
-    
-    render();
-  } catch (err) {
-    console.error("Failed syncing data with server backend:", err);
-  }
-}
-
-/* ── RENDER ── */
-function render() {
-  let list = [...props];
-
-  // tab filter
-  if (activeFilter !== 'all') list = list.filter(p => p.status === activeFilter);
-
-  // search filters
-  const kw = (document.getElementById('s-keyword').value || '').trim().toLowerCase();
-  const st = document.getElementById('s-status').value;
-  const ty = document.getElementById('s-type').value;
-  if (kw) list = list.filter(p => (p.title + p.location + p.type + p.desc).toLowerCase().includes(kw));
-  if (st) list = list.filter(p => p.status === st);
-  if (ty) list = list.filter(p => p.type === ty);
-
-  // stats
-  document.getElementById('s-total').textContent = props.length;
-  document.getElementById('s-sale').textContent  = props.filter(p => p.status === 'For Sale').length;
-  document.getElementById('s-rent').textContent  = props.filter(p => p.status === 'For Rent').length;
-  document.getElementById('count-badge').textContent = list.length + ' propert' + (list.length === 1 ? 'y' : 'ies');
-
-  const grid = document.getElementById('props-grid');
-  if (!list.length) {
-    grid.innerHTML = '<div class="empty"><h3>No Properties Found</h3><p>Try a different filter or add a new listing.</p></div>';
-    return;
-  }
-  grid.innerHTML = list.map(p => cardHTML(p)).join('');
-  renderContact();
-}
-
-function badgeCls(s) { return s === 'For Sale' ? 'b-sale' : s === 'For Rent' ? 'b-rent' : 'b-sold'; }
-function esc(s) {
-  if (s === null || s === undefined) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function cardHTML(p) {
-  const img = p.img || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80';
-  const beds  = (p.type !== 'Plot' && p.beds)  ? `<div class="spec"><span class="spec-v">${esc(p.beds)}</span><span class="spec-l">Beds</span></div>` : '';
-  const baths = (p.type !== 'Plot' && p.baths) ? `<div class="spec"><span class="spec-v">${esc(p.baths)}</span><span class="spec-l">Baths</span></div>` : '';
-  return `
-  <div class="card">
-    <div class="card-img">
-      <img src="${esc(img)}" alt="${esc(p.title)}" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80'"/>
-      <span class="card-badge ${badgeCls(p.status)}">${esc(p.status)}</span>
-      <div class="card-price">${esc(p.price)}</div>
-    </div>
-    <div class="card-body">
-      <h3 class="card-title">${esc(p.title)}</h3>
-      <div class="card-loc">
-        <svg width="9" height="12" viewBox="0 0 9 12" fill="none"><path d="M4.5 0C2.29 0 .5 1.79.5 4c0 3 4 8 4 8s4-5 4-8c0-2.21-1.79-4-4-4Zm0 5.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" fill="#c9a84c"/></svg>
-        ${esc(p.location)}
-      </div>
-      <div class="card-specs">
-        ${beds}${baths}
-        <div class="spec"><span class="spec-v">${esc(p.area) || '–'}</span><span class="spec-l">Sq Ft</span></div>
-        <div class="spec"><span class="spec-v">${esc(p.type)}</span><span class="spec-l">Type</span></div>
-      </div>
-      <p class="card-desc">${esc(p.desc)}</p>
-      <div class="card-foot">
-        <div class="agent">
-          <span class="agent-name">${esc(p.agent)}</span>
-          <span class="agent-ph">${esc(p.phone)}</span>
-        </div>
-        <div class="card-btns">
-          <button class="cbtn cbtn-edit" onclick="openEdit(${p.id})">Edit</button>
-          <button class="cbtn cbtn-del"  onclick="delProp(${p.id})">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>`;
-}
-
-function renderContact() {
-  const c = contact;
-
-  const contactRows = document.getElementById('contact-rows');
-
-  if (contactRows) {
-    const rows = [
-      c.phone ? `<div class="c-row"><div class="c-icon">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">${esc(c.phone)}</div></div></div>` : '',
-      c.email ? `<div class="c-row"><div class="c-icon">✉️</div><div><div class="c-lbl">Email</div><div class="c-val">${esc(c.email)}</div></div></div>` : '',
-      c.address ? `<div class="c-row"><div class="c-icon">📍</div><div><div class="c-lbl">Address</div><div class="c-val">${esc(c.address)}</div></div></div>` : '',
-      c.whatsapp ? `<div class="c-row"><div class="c-icon">💬</div><div><div class="c-lbl">WhatsApp</div><div class="c-val">${esc(c.whatsapp)}</div></div></div>` : '',
-      c.hours ? `<div class="c-row"><div class="c-icon">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">${esc(c.hours)}</div></div></div>` : ''
-    ].join('');
-
-    contactRows.innerHTML = rows;
-  }
-
-  const footerEmail = document.getElementById('footer-email');
-  if (footerEmail) {
-    footerEmail.textContent = c.email || '';
-  }
-}
-
-
-/* ── FILTER & SEARCH ── */
-function setFilter(v, el) {
-  activeFilter = v;
-  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('s-status').value = '';
-  document.getElementById('s-type').value   = '';
-  document.getElementById('s-keyword').value = '';
-  render();
-}
-function doSearch() { render(); }
-
-/* ── MODALS ── */
-function openModal(id)  { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
-  if (id === 'prop-modal') resetForm();
-}
-document.querySelectorAll('.modal-overlay').forEach(o => {
-  o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); });
-});
-
-function openAddModal() {
-  editId = null; uploadFileObject = null; resetForm();
-  document.getElementById('modal-title').textContent = 'Add Property';
-  openModal('prop-modal');
-}
-
-function openEdit(id) {
-  const p = props.find(x => x.id === id); if (!p) return;
-  editId = id; uploadFileObject = null;
-  document.getElementById('modal-title').textContent = 'Edit Property';
-  document.getElementById('f-title').value    = p.title;
-  document.getElementById('f-location').value = p.location;
-  document.getElementById('f-price').value    = p.price;
-  document.getElementById('f-status').value   = p.status;
-  document.getElementById('f-type').value     = p.type;
-  document.getElementById('f-beds').value     = p.beds;
-  document.getElementById('f-baths').value    = p.baths;
-  document.getElementById('f-area').value     = p.area;
-  document.getElementById('f-agent').value    = p.agent;
-  document.getElementById('f-phone').value    = p.phone;
-  document.getElementById('f-desc').value     = p.desc;
-  document.getElementById('f-imgurl').value   = p.img || '';
-  const prev = document.getElementById('img-prev');
-  if (p.img) {
-    prev.src = p.img; prev.style.display = 'block';
-    document.getElementById('img-icon').style.display = 'none';
-    document.getElementById('img-txt').style.display  = 'none';
-  }
-  openModal('prop-modal');
-}
-
-function resetForm() {
-  ['f-title','f-location','f-price','f-area','f-agent','f-phone','f-desc','f-imgurl'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('f-beds').value   = '';
-  document.getElementById('f-baths').value  = '';
-  document.getElementById('f-status').value = 'For Sale';
-  document.getElementById('f-type').value   = 'Villa';
-  const prev = document.getElementById('img-prev');
-  prev.style.display = 'none';
-  document.getElementById('img-icon').style.display = 'block';
-  document.getElementById('img-txt').style.display  = 'block';
-  document.getElementById('f-file').value = '';
-  uploadFileObject = null;
-}
-
-// Save Property directly using multipart Form Data to the Server
-async function saveProp() {
-  const title = document.getElementById('f-title').value.trim();
-  if (!title) { showToast('Please enter a property title.'); return; }
-
-  const data = {
-    id       : editId,
-    title,
-    location : document.getElementById('f-location').value.trim(),
-    price    : document.getElementById('f-price').value.trim(),
-    status   : document.getElementById('f-status').value,
-    type     : document.getElementById('f-type').value,
-    beds     : parseInt(document.getElementById('f-beds').value)  || 0,
-    baths    : parseInt(document.getElementById('f-baths').value) || 0,
-    area     : document.getElementById('f-area').value.trim(),
-    agent    : document.getElementById('f-agent').value.trim(),
-    phone    : document.getElementById('f-phone').value.trim(),
-    desc     : document.getElementById('f-desc').value.trim(),
-    img      : document.getElementById('f-imgurl').value.trim() || (editId ? (props.find(p => p.id === editId) || {}).img : '')
-  };
-
-  const formData = new FormData();
-  formData.append('propertyData', JSON.stringify(data));
-  if (uploadFileObject) {
-    formData.append('imageFile', uploadFileObject);
-  }
-
-  try {
-    const response = await fetch('/api/properties', {
-      method: 'POST',
-      body: formData
-    });
-    const result = await response.json();
-    if (result.success) {
-      showToast(editId ? 'Property updated on server!' : 'Property added to server!');
-      closeModal('prop-modal');
-      initApp(); // Reload cleanly
-    }
-  } catch(err) {
-    showToast('Failed to save data to server.');
-  }
-}
-
-async function delProp(id) {
-  if (!confirm('Remove this property permanently from server?')) return;
-  try {
-    const response = await fetch(`/api/properties/${id}`, { method: 'DELETE' });
-    const result = await response.json();
-    if(result.success) {
-      showToast('Property removed.');
-      initApp();
-    }
-  } catch (err) {
-    showToast('Failed to delete property.');
-  }
-}
-
-/* image previews */
-function previewUrl() {
-  const url  = document.getElementById('f-imgurl').value.trim();
-  const prev = document.getElementById('img-prev');
-  if (url) {
-    prev.src = url; prev.style.display = 'block';
-    document.getElementById('img-icon').style.display = 'none';
-    document.getElementById('img-txt').style.display  = 'none';
-    uploadFileObject = null;
-  } else {
-    prev.style.display = 'none';
-    document.getElementById('img-icon').style.display = 'block';
-    document.getElementById('img-txt').style.display  = 'block';
-  }
-}
-
-function handleUpload(e) {
-  const f = e.target.files[0]; if (!f) return;
-  uploadFileObject = f; // Save raw file structure to push to server later
-  
-  const r = new FileReader();
-  r.onload = ev => {
-    const prev = document.getElementById('img-prev');
-    prev.src = ev.target.result; prev.style.display = 'block';
-    document.getElementById('img-icon').style.display = 'none';
-    document.getElementById('img-txt').style.display  = 'none';
-    document.getElementById('f-imgurl').value = '';
-  };
-  r.readAsDataURL(f);
-}
-
-/* contact server sync */
-function openContactModal() {
-  const c = contact;
-  document.getElementById('c-name').value     = c.name || '';
-  document.getElementById('c-phone').value    = c.phone || '';
-  document.getElementById('c-email').value    = c.email || '';
-  document.getElementById('c-address').value  = c.address || '';
-  document.getElementById('c-whatsapp').value = c.whatsapp || '';
-  document.getElementById('c-hours').value    = c.hours || '';
-  openModal('contact-modal');
-}
-
-async function saveContact() {
-  const updatedContact = {
-    name     : document.getElementById('c-name').value.trim(),
-    phone    : document.getElementById('c-phone').value.trim(),
-    email    : document.getElementById('c-email').value.trim(),
-    address  : document.getElementById('c-address').value.trim(),
-    whatsapp : document.getElementById('c-whatsapp').value.trim(),
-    hours    : document.getElementById('c-hours').value.trim()
-  };
-
-  try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedContact)
-    });
-    const result = await response.json();
-    if(result.success) {
-      showToast('Contact info updated on server!');
-      closeModal('contact-modal');
-      initApp();
-    }
-  } catch(err) {
-    showToast('Failed to update contact info.');
-  }
-}
-
-/* toast */
-let toastTimer;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-/* -- ADMIN AUTH -- */
-const ADMIN_PASSWORD = 'bajiyaproperties';
-const SESSION_KEY = 'kp_admin_session';
-
-function isAdmin() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
-
-function openLoginModal() {
-  if (isAdmin()) { showToast('You are already logged in as admin.'); return; }
-  document.getElementById('admin-pass').value = '';
-  document.getElementById('login-err').classList.remove('show');
-  openModal('login-modal');
-  setTimeout(() => document.getElementById('admin-pass').focus(), 100);
-}
-
-function doLogin() {
-  const pass = document.getElementById('admin-pass').value;
-  if (pass === ADMIN_PASSWORD) {
-    sessionStorage.setItem(SESSION_KEY, '1');
-    closeModal('login-modal');
-    document.body.classList.add('admin-mode');
-    document.getElementById('admin-login-btn').style.display = 'none';
-    showToast('Welcome, Admin!');
-    render();
-  } else {
-    document.getElementById('login-err').classList.add('show');
-    document.getElementById('admin-pass').value = '';
-    document.getElementById('admin-pass').focus();
-  }
-}
-
-function doLogout() {
-  sessionStorage.removeItem(SESSION_KEY);
-  document.body.classList.remove('admin-mode');
-  document.getElementById('admin-login-btn').style.display = 'inline-flex';
-  showToast('Logged out successfully.');
-  render();
-}
-
-/* init execution */
-if (isAdmin()) {
-  document.body.classList.add('admin-mode');
-  document.getElementById('admin-login-btn').style.display = 'none';
-}
-
-/* ── CONTACT FORM SUBMISSION ── */
-
-async function sendMessage() {
-
-  try {
-
-    const response = await fetch('/api/send-message', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: document.getElementById('cf-name').value,
-        phone: document.getElementById('cf-phone').value,
-        email: document.getElementById('cf-email').value,
-        interest: document.getElementById('cf-interest').value,
-        message: document.getElementById('cf-message').value
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      alert('Message Sent Successfully');
-    } else {
-      alert(data.error || 'Failed to send message');
-    }
-
-  } catch (err) {
-    console.error(err);
-    alert('Server Error');
-  }
-}
-
-
-initApp();
-</script>
+<script src="app.js"></script>
 </body>
 </html>

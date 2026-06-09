@@ -128,52 +128,6 @@ app.post('/api/contact', (req, res) => {
 // 6. Handle Contact Form Submissions via Email
 
 
-app.post('/api/send-message', async (req, res) => {
-  const { name, phone, email, interest, message } = req.body;
-
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `🏠 New Property Enquiry - ${name}`,
-      html: `
-        <h2>New Property Enquiry</h2>
-
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Interest:</strong> ${interest}</p>
-
-        <hr>
-
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `
-    });
-
-    res.json({
-      success: true,
-      message: "Email sent successfully"
-    });
-
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
-      success: false,
-      error: "Failed to send email"
-    });
-  }
-});
 
 
 app.get('/google6b837a87eb043897.html', (req, res) => {
