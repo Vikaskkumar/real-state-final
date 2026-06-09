@@ -622,3 +622,8 @@ body.admin-mode .admin-bar { display: flex; }
   .hero h1 { font-size: 2.2rem; }
   .listings-toolbar { flex-direction: column; align-items: flex-start; }
 }
+
+/* Mobile admin controls fix */
+body.admin-mode #mobile-admin-btn{display:none!important;}
+body.admin-mode .mobile-admin-only{display:flex!important;}
+.mobile-admin-only{display:none!important;width:100%;margin-top:10px;}
