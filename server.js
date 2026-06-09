@@ -175,4 +175,9 @@ app.post('/api/send-message', async (req, res) => {
   }
 });
 
+
+app.get('/google6b837a87eb043897.html', (req, res) => {
+  res.send('google-site-verification: google6b837a87eb043897.html');
+});
+
 app.listen(PORT, () => console.log(`Server running smoothly at http://localhost:${PORT}`));
